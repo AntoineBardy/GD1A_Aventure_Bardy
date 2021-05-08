@@ -19,9 +19,6 @@ export default class Village extends Phaser.Scene {
 		this.load.spritesheet('hero', 'assets/hero.png',{ frameWidth: 44, frameHeight: 44 })
 		this.load.image('monstre','assets/Monstres&Ennemis/Zombie.png')
 	
-		//this.load.image('border1','assets/BordureForest.png')
-		//this.load.image('warp','assets/WarpToDream.png')
-	
 		this.load.image('Tileset', 'assets/TilesetVillage.png')
 	
 		this.load.tilemapTiledJSON('map', 'assets/Map.json');
@@ -146,9 +143,6 @@ export default class Village extends Phaser.Scene {
 
 		//Colliders
 
-		//this.physics.add.collider(this.player, this.forestborder, this.warpingPlayerToForest, null, this);
-		//this.physics.add.collider(this.player, this.dreamborder, this.warpingPlayerToDream, null, this);
-
         this.physics.add.collider(this.player, Background);
         
         Background.setCollisionByProperty({collides:true});
@@ -165,26 +159,6 @@ export default class Village extends Phaser.Scene {
 		this.physics.add.overlap(this.sword, this.ennemis, this.killMonster, null,this);
 		this.physics.add.overlap(this.player, this.argent, this.MOONEY, null,this);
 		this.physics.add.overlap(this.player, this.powerup2, this.Bottes, null,this);
-
-
-		/* const debugGraphics = this.add.graphics().setAlpha(0.75);
-		Background.renderDebug(debugGraphics, {
-  			tileColor: null, // Color of non-colliding tiles
-  			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-  			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-		});
-		Layer1.renderDebug(debugGraphics, {
-			tileColor: null, // Color of non-colliding tiles
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-	  	});
-		Layer2.renderDebug(debugGraphics, {
-			tileColor: null, // Color of non-colliding tiles
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-	  	}); */
-        
-        //Variables
 
         //Camera
         this.cameras.main.startFollow(this.player)
@@ -279,13 +253,6 @@ export default class Village extends Phaser.Scene {
 		}
 
     }
-
-	//warpingPlayerToForest(){
-	//	this.scene.start('forest', { health:this.life})
-	//}
-	//warpingPlayerToDream(){
-		//this.scene.start('downside_world' , {attack:this.attack , health:this.life})
-	//}
 
 	hitEnnemi(){
 		if (this.immune){
