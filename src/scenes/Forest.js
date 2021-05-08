@@ -78,13 +78,6 @@ export default class Forest extends Phaser.Scene {
 	this.argent = this.physics.add.group();
 	this.sword = this.physics.add.group();
 
-		/*this.Forestborder = this.physics.add.staticGroup();
-		this.Forestborder.create(1152,16,'border1').setDepth(0);
-
-		this.dreamborder = this.physics.add.staticGroup();
-		this.dreamborder.create(127,832,'warp')*/
-
-	
         //Animations
         
         this.anims.create({
@@ -146,9 +139,6 @@ export default class Forest extends Phaser.Scene {
 
 		//Colliders
 
-		//this.physics.add.collider(this.player, forestborder, this.warpingPlayerToForest, null, this);
-		//this.physics.add.collider(this.player, this.dreamborder, this.warpingPlayerToDream, null, this);
-
         this.physics.add.collider(this.player, Background);
         
         Background.setCollisionByProperty({collides:true});
@@ -173,24 +163,6 @@ export default class Forest extends Phaser.Scene {
 		this.physics.add.overlap(this.player, this.powerup, this.getSword, null, this);
 		this.physics.add.overlap(this.sword, this.ennemis, this.killMonster, null,this);
 		this.physics.add.overlap(this.player, this.argent, this.MOONEY, null,this);
-
-		/* const debugGraphics = this.add.graphics().setAlpha(0.75);
-		Background.renderDebug(debugGraphics, {
-  			tileColor: null, // Color of non-colliding tiles
-  			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-  			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-		});
-		Layer1.renderDebug(debugGraphics, {
-			tileColor: null, // Color of non-colliding tiles
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-	  	});
-		Layer2.renderDebug(debugGraphics, {
-			tileColor: null, // Color of non-colliding tiles
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-			faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-	  	}); */
-        
 
 		  //Camera
 		  this.cameras.main.startFollow(this.player);
@@ -305,8 +277,7 @@ export default class Forest extends Phaser.Scene {
     }
 
 	getSword(player, sword){
-        this.attaque = true 
-        //this.scene.start('upside_world', {entryForest:this.entryForest, attack:this.attack, health: this.life})
+        this.attaque = true
 		sword.destroy();
     }
 
